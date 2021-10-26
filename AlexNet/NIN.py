@@ -19,15 +19,13 @@ def NIN(in_channels, out_channels, kernel_size, stride, padding):
         nn.Conv2d(
             out_channels,
             out_channels,
-            kernel_size=1,
-            padding=1))
+            kernel_size=1))
     layer.append(nn.ReLU())
     layer.append(
         nn.Conv2d(
             out_channels,
             out_channels,
-            kernel_size=1,
-            padding=1))
+            kernel_size=1))
     layer.append(nn.ReLU())
 
     return nn.Sequential(*layer)
@@ -39,7 +37,7 @@ net = nn.Sequential(NIN(1, 96, kernel_size=11, stride=4, padding=0),
                     nn.MaxPool2d(3, stride=2),
                     NIN(96, 255, kernel_size=5, stride=1, padding=2),
                     nn.MaxPool2d(3, stride=2),
-                    NIN(255, 384, kernel_size=5, stride=1, padding=1),
+                    NIN(255, 384, kernel_size=3, stride=1, padding=1),
                     nn.MaxPool2d(3, stride=2),
                     nn.Dropout(0.5),
                     NIN(384, 10, kernel_size=3, stride=1, padding=1),
@@ -52,16 +50,17 @@ class Net(nn.Module):
     def __init__(self):
         super().__init__()
         self.net = nn.Sequential(NIN(1, 96, kernel_size=11, stride=4, padding=0),
-                            nn.MaxPool2d(3, stride=2),
-                            NIN(96, 255, kernel_size=5, stride=1, padding=2),
-                            nn.MaxPool2d(3, stride=2),
-                            NIN(255, 384, kernel_size=5, stride=1, padding=1),
-                            nn.MaxPool2d(3, stride=2),
-                            nn.Dropout(0.5),
-                            NIN(384, 10, kernel_size=3, stride=1, padding=1),
-                            nn.AdaptiveAvgPool2d((1, 1)),
-                            nn.Flatten()
-                            )
+                                 nn.MaxPool2d(3, stride=2),
+                                 NIN(96, 255, kernel_size=5, stride=1, padding=2),
+                                 nn.MaxPool2d(3, stride=2),
+                                 NIN(255, 384, kernel_size=3, stride=1, padding=1),
+                                 nn.MaxPool2d(3, stride=2),
+                                 nn.Dropout(0.5),
+                                 NIN(384, 10, kernel_size=3, stride=1, padding=1),
+                                 nn.AdaptiveAvgPool2d((1, 1)),
+                                 nn.Flatten()
+                                 )
+
     def forward(self, x):
         x = self.net(x)
         return x
@@ -151,9 +150,9 @@ def model_test():
     X = torch.rand((1, 1, 224, 224))
     for layer in net:
         X = layer(X)
-        print(layer.__class__.__name__, 'output shape:\t', X.shape)
+        print(layer.__class__.__name__, '\toutput shape:', X.shape)
 
 
 if __name__ == "__main__":
-    # model_test()
-    main()
+    model_test()
+    # main()
