@@ -66,21 +66,31 @@ class Net(nn.Module):
         return x
 
 
-def train(model, device, train_loader, optimizer, epoch):
-    model.train()
-    for i, (data, label) in enumerate(train_loader):
-        data, label = data.to(device), label.to(device)
-        optimizer.zero_grad()
-        output = model(data)
-        criteria = nn.CrossEntropyLoss()
-        loss = criteria(output, label)
-        loss.backward()
-        optimizer.step()
+def train(model, device, train_loader, test_loader, epochs):
+    #如果采用默认初始化权重，很难train的动
+    def init_weights(m):
+        if type(m) == nn.Linear or type(m) == nn.Conv2d:
+            nn.init.xavier_uniform_(m.weight)
+    model.apply(init_weights)
 
-        if i % 10 == 0:
-            print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\t lr:'.format(
-                epoch, i * len(data), len(train_loader.dataset),
-                100. * i / len(train_loader), loss.item()), optimizer.state_dict()['param_groups'][0]['lr'])
+    model.to(device)
+    optimizer = optim.SGD(model.parameters(), lr=0.1)
+    loss = nn.CrossEntropyLoss()
+    for epoch in range(epochs):
+        model.train()
+        for i, (data, label) in enumerate(train_loader):
+            data, label = data.to(device), label.to(device)
+            optimizer.zero_grad()
+            output = model(data)
+            l = loss(output, label)
+            l.backward()
+            optimizer.step()
+
+            if i % 10 == 0:
+                print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\t lr:'.format(
+                    epoch, i * len(data), len(train_loader.dataset),
+                           100. * i / len(train_loader), l.item()), optimizer.state_dict()['param_groups'][0]['lr'])
+        test(model, device, test_loader)
 
 
 def test(model, device, test_loader):
@@ -136,14 +146,10 @@ def main():
         pin_memory=pin_memory
     )
 
-    model = Net().to(device)
-    optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.5)
-    scheduler = optim.lr_scheduler.MultiStepLR(
-        optimizer, milestones=[12, 24], gamma=0.1)  # 学习率按区间更新
+    model = Net()
+    epochs = 10
+    train(model, device, train_loader, test_loader, epochs)
 
-    for epoch in range(1, 10):
-        train(model, device, train_loader, optimizer, epoch)
-        test(model, device, test_loader)
 
 
 def model_test():
@@ -154,5 +160,5 @@ def model_test():
 
 
 if __name__ == "__main__":
-    model_test()
-    # main()
+    #model_test()
+    main()
