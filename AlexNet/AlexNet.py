@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import datasets, transforms
 import torch.optim as optim
+from torch.utils.tensorboard import SummaryWriter
 
 
 class Net(nn.Module):
