@@ -5,6 +5,7 @@ import torch.optim as optim
 from torch.utils.tensorboard import SummaryWriter
 import torch.nn.functional as F
 from torchsummary import summary
+import os
 
 writer = SummaryWriter("/root/tf-logs")
 
@@ -80,7 +81,7 @@ class Net(nn.Module):
         x = self.net(x)
         return x
 
-def train(model, device, train_loader, test_loader, epochs):
+def train(model, device, train_loader, test_loader, epochs, lr=0.1, save_dir=None):
     # 如果采用默认初始化权重，很难train的动
     def init_weights(m):
         if isinstance(m, nn.Linear) or isinstance(m, nn.Conv2d):
@@ -89,7 +90,7 @@ def train(model, device, train_loader, test_loader, epochs):
     model.apply(init_weights)
 
     model.to(device)
-    optimizer = optim.SGD(model.parameters(), lr=0.1)
+    optimizer = optim.SGD(model.parameters(), lr=lr)
     loss = nn.CrossEntropyLoss()
     for epoch in range(epochs):
         model.train()
@@ -106,13 +107,14 @@ def train(model, device, train_loader, test_loader, epochs):
             if i % 10 == 0:
                 print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\t lr:'.format(
                     epoch, i * len(data), len(train_loader.dataset),
-                    100. * i / len(train_loader), l.item()), optimizer.state_dict()['param_groups'][0]['lr'])
+                    100. * i / len(train_loader), l), optimizer.state_dict()['param_groups'][0]['lr'])
         test_loss, acc = test(model, device, test_loader)
         total_loss = total_loss / len(train_loader)
         writer.add_scalars(
             'check/Loss', {'Train': total_loss, 'Test': test_loss}, epoch)
         writer.add_scalar('check/Accuracy', acc, epoch)
-
+        save_dirs = os.path.join(save_dir, str(epoch))
+        torch.save(model.state_dict(), save_dirs)
 
 def test(model, device, test_loader):
     model.eval()
@@ -122,6 +124,65 @@ def test(model, device, test_loader):
     with torch.no_grad():  # 无需计算梯度
         for i, (data, label) in enumerate(test_loader):
             data, label = data.to(device), label.to(device)
+            output = model(data)
+            # sum up batch loss
+            loss = criteria(output, label)
+            test_loss += loss
+            # get the index of the max log-probability
+            pred = output.argmax(dim=1, keepdim=True)
+            # item返回一个python标准数据类型 将tensor转换
+            correct += pred.eq(label.view_as(pred)).sum()
+
+    print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
+        test_loss / len(test_loader), correct, len(test_loader.dataset),
+        100. * correct / len(test_loader.dataset)))
+    return (test_loss / len(test_loader), 100. *
+            correct / len(test_loader.dataset))
+
+def train_mul(model, devices, train_loader, test_loader, epochs, lr=0.15, save_dir=None):
+    # 如果采用默认初始化权重，很难train的动
+    def init_weights(m):
+        if isinstance(m, nn.Linear) or isinstance(m, nn.Conv2d):
+            nn.init.xavier_uniform_(m.weight)
+
+    model.apply(init_weights)
+
+    model = nn.DataParallel(model, device_ids=devices)
+    optimizer = optim.SGD(model.parameters(), lr=lr)
+    loss = nn.CrossEntropyLoss()
+    for epoch in range(epochs):
+        model.train()
+        total_loss = 0
+        for i, (data, label) in enumerate(train_loader):
+            data, label = data.to(devices[0]), label.to(devices[0])
+            optimizer.zero_grad()
+            output = model(data)
+            l = loss(output, label)
+            total_loss += l
+            l.backward()
+            optimizer.step()
+
+            if i % 10 == 0:
+                print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\t lr:'.format(
+                    epoch, i * len(data), len(train_loader.dataset),
+                    100. * i / len(train_loader), l.item()), optimizer.state_dict()['param_groups'][0]['lr'])
+        test_loss, acc = test_mul(model, devices, test_loader)
+        total_loss = total_loss / len(train_loader)
+        writer.add_scalars(
+            'check/Loss', {'Train': total_loss, 'Test': test_loss}, epoch)
+        writer.add_scalar('check/Accuracy', acc, epoch)
+        save_dirs = os.path.join(save_dir, str(epoch))
+        torch.save(model.state_dict(), save_dirs)
+
+
+def test_mul(model, devices, test_loader):
+    model.eval()
+    test_loss = 0
+    correct = 0
+    criteria = nn.CrossEntropyLoss()
+    with torch.no_grad():  # 无需计算梯度
+        for i, (data, label) in enumerate(test_loader):
+            data, label = data.to(devices[0]), label.to(devices[0])
             output = model(data)
             # sum up batch loss
             loss = criteria(output, label)

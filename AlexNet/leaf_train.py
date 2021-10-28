@@ -112,7 +112,7 @@ if __name__ == "__main__":
     model = Net()
     epochs = 15
     lr = 0.15
-    num_gpus = 2
+    num_gpus = 1
     save_dir = 'leaf_params'
     if num_gpus > 1:
         # mul gpu
