@@ -102,7 +102,7 @@ env
 *.swp
 *.swm
 *~
-
+*.jpg
 # macOS dir files
 .DS_Store
 

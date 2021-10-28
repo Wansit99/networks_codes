@@ -48,3 +48,7 @@ AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303859.DESKT
 AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303859.DESKTOP-ISO5UUJ.20284.0
 AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303859.DESKTOP-ISO5UUJ.2452.0
 AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303860.DESKTOP-ISO5UUJ.2080.0
+AlexNet/result.csv
+AlexNet/leaf/para
+AlexNet/leaf/test.csv
+AlexNet/leaf/train.csv

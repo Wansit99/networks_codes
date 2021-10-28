@@ -60,7 +60,7 @@ def resnet_block(input_channels, output_channels, num_residuals, first_block=Fal
             blocks.append(Residual(output_channels, output_channels))
     return blocks
 
-b1 = nn.Sequential(nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3),
+b1 = nn.Sequential(nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3),
                    nn.BatchNorm2d(64),
                    nn.ReLU(),
                    nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
@@ -69,7 +69,7 @@ b3 = nn.Sequential(*resnet_block(64, 128, 2))
 b4 = nn.Sequential(*resnet_block(128, 256, 2))
 b5 = nn.Sequential(*resnet_block(256, 512, 2))
 
-net = nn.Sequential(b1, b2, b3, b4, b5, nn.AdaptiveAvgPool2d((1,1)), nn.Flatten(), nn.Linear(512,10))
+net = nn.Sequential(b1, b2, b3, b4, b5, nn.AdaptiveAvgPool2d((1,1)), nn.Flatten(), nn.Linear(512,176))
 
 class Net(nn.Module):
     def __init__(self):
@@ -120,7 +120,7 @@ def test(model, device, test_loader):
     correct = 0
     criteria = nn.CrossEntropyLoss()
     with torch.no_grad():  # 无需计算梯度
-        for data, label in test_loader:
+        for i, (data, label) in enumerate(test_loader):
             data, label = data.to(device), label.to(device)
             output = model(data)
             # sum up batch loss
@@ -173,7 +173,7 @@ def main():
 
 
 def model_test():
-    X = torch.rand((1, 1, 224, 224))
+    X = torch.rand((1, 3, 224, 224))
     for layer in net:
         X = layer(X)
         print(layer.__class__.__name__, '\toutput shape:', X.shape)
