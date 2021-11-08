@@ -5,10 +5,10 @@ from torch.utils.data import DataLoader, Dataset
 import cv2
 import torch
 from torchvision import datasets, transforms
-from ResNet import *
+from ResNet_pre import *
 
-trainss = pd.read_csv('train.csv')
-test = pd.read_csv('test.csv')
+trainss = pd.read_csv('leaf/train.csv')
+test = pd.read_csv('leaf/test.csv')
 
 label = pd.get_dummies(trainss, columns=['label'])
 labels = label[:].values
@@ -18,9 +18,9 @@ pred = np.argmax(labels, axis=1)
 label_list = label.columns.values[1:]
 label_list = [i[6:] for i in label_list]
 
-rate = 0.99
+rate = 0.9
 
-root = 'images/'
+root = 'leaf/classify-leaves/images/'
 root_dir = os.listdir(root)
 root_dir.sort(key=lambda x: int(x[:-4]))
 train_img_dir = root_dir[:int(len(pred) * rate)]
@@ -85,8 +85,8 @@ def try_gpu(i=0):
 
 if __name__ == "__main__":
 
-    batch_size = 256
-    num_works = 8  # 加载数据集用的cpu核数
+    batch_size = 16
+    num_works = 6  # 加载数据集用的cpu核数
     pin_memory = True  # 使用内存更快
     trains = LeafData(
         root_dir=root,
@@ -110,9 +110,20 @@ if __name__ == "__main__":
                              pin_memory=pin_memory)  # 使用DataLoader加载数据
 
     model = Net()
+    # pretrained_dict = torch.load('resnet18.pth')
+    # model_dict = model.state_dict()
+    # pretrained_dict = {'BackBone.' + k: v for k, v in pretrained_dict.items() if
+    #                    ('BackBone.' + k in model_dict and 'fc' not in k)}
+    #
+    # # for k, v in pretrained_dict.items():
+    # #     print(k)
+    #
+    # model_dict.update(pretrained_dict)
+    # model.load_state_dict(model_dict)
+
     epochs = 15
-    lr = 0.15
-    num_gpus = 2
+    lr = 1
+    num_gpus = 1
     save_dir = 'leaf_params'
     if num_gpus > 1:
         # mul gpu

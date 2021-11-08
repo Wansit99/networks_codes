@@ -1,54 +1,267 @@
-AlexNet/fashionmnist_data/FashionMNIST/raw/t10k-images-idx3-ubyte
-AlexNet/fashionmnist_data/FashionMNIST/raw/t10k-labels-idx1-ubyte
-AlexNet/fashionmnist_data/FashionMNIST/raw/train-images-idx3-ubyte
-AlexNet/fashionmnist_data/FashionMNIST/raw/train-labels-idx1-ubyte
-AlexNet/runs/Oct27_10-28-53_DESKTOP-ISO5UUJ/events.out.tfevents.1635301735.DESKTOP-ISO5UUJ.13376.0
-AlexNet/runs/Oct27_10-31-20_DESKTOP-ISO5UUJ/events.out.tfevents.1635301883.DESKTOP-ISO5UUJ.14896.0
-AlexNet/runs/Oct27_10-31-26_DESKTOP-ISO5UUJ/events.out.tfevents.1635301889.DESKTOP-ISO5UUJ.16028.0
-AlexNet/runs/Oct27_10-31-26_DESKTOP-ISO5UUJ/events.out.tfevents.1635301889.DESKTOP-ISO5UUJ.18280.0
-AlexNet/runs/Oct27_10-31-26_DESKTOP-ISO5UUJ/events.out.tfevents.1635301890.DESKTOP-ISO5UUJ.15940.0
-AlexNet/runs/Oct27_10-31-26_DESKTOP-ISO5UUJ/events.out.tfevents.1635301890.DESKTOP-ISO5UUJ.18984.0
-AlexNet/runs/Oct27_10-31-26_DESKTOP-ISO5UUJ/events.out.tfevents.1635301890.DESKTOP-ISO5UUJ.20256.0
-AlexNet/runs/Oct27_10-31-26_DESKTOP-ISO5UUJ/events.out.tfevents.1635301890.DESKTOP-ISO5UUJ.2860.0
-AlexNet/runs/Oct27_10-31-27_DESKTOP-ISO5UUJ/events.out.tfevents.1635301890.DESKTOP-ISO5UUJ.3400.0
-AlexNet/runs/Oct27_10-34-12_DESKTOP-ISO5UUJ/events.out.tfevents.1635302055.DESKTOP-ISO5UUJ.18904.0
-AlexNet/runs/Oct27_10-34-19_DESKTOP-ISO5UUJ/events.out.tfevents.1635302062.DESKTOP-ISO5UUJ.1468.0
-AlexNet/runs/Oct27_10-34-19_DESKTOP-ISO5UUJ/events.out.tfevents.1635302062.DESKTOP-ISO5UUJ.15984.0
-AlexNet/runs/Oct27_10-34-19_DESKTOP-ISO5UUJ/events.out.tfevents.1635302062.DESKTOP-ISO5UUJ.17012.0
-AlexNet/runs/Oct27_10-34-19_DESKTOP-ISO5UUJ/events.out.tfevents.1635302062.DESKTOP-ISO5UUJ.17152.0
-AlexNet/runs/Oct27_10-34-19_DESKTOP-ISO5UUJ/events.out.tfevents.1635302062.DESKTOP-ISO5UUJ.19792.0
-AlexNet/runs/Oct27_10-34-19_DESKTOP-ISO5UUJ/events.out.tfevents.1635302062.DESKTOP-ISO5UUJ.2844.0
-AlexNet/runs/Oct27_10-34-19_DESKTOP-ISO5UUJ/events.out.tfevents.1635302062.DESKTOP-ISO5UUJ.7588.0
-AlexNet/runs/Oct27_10-35-55_DESKTOP-ISO5UUJ/events.out.tfevents.1635302158.DESKTOP-ISO5UUJ.10208.0
-AlexNet/runs/Oct27_10-35-55_DESKTOP-ISO5UUJ/events.out.tfevents.1635302158.DESKTOP-ISO5UUJ.11760.0
-AlexNet/runs/Oct27_10-35-55_DESKTOP-ISO5UUJ/events.out.tfevents.1635302158.DESKTOP-ISO5UUJ.15436.0
-AlexNet/runs/Oct27_10-35-55_DESKTOP-ISO5UUJ/events.out.tfevents.1635302158.DESKTOP-ISO5UUJ.15616.0
-AlexNet/runs/Oct27_10-35-55_DESKTOP-ISO5UUJ/events.out.tfevents.1635302158.DESKTOP-ISO5UUJ.16716.0
-AlexNet/runs/Oct27_10-35-55_DESKTOP-ISO5UUJ/events.out.tfevents.1635302158.DESKTOP-ISO5UUJ.8540.0
-AlexNet/runs/Oct27_10-35-55_DESKTOP-ISO5UUJ/events.out.tfevents.1635302159.DESKTOP-ISO5UUJ.16880.0
-AlexNet/runs/Oct27_10-36-08_DESKTOP-ISO5UUJ/events.out.tfevents.1635302171.DESKTOP-ISO5UUJ.10644.0
-AlexNet/runs/Oct27_10-36-08_DESKTOP-ISO5UUJ/events.out.tfevents.1635302171.DESKTOP-ISO5UUJ.10776.0
-AlexNet/runs/Oct27_10-36-08_DESKTOP-ISO5UUJ/events.out.tfevents.1635302171.DESKTOP-ISO5UUJ.17108.0
-AlexNet/runs/Oct27_10-36-08_DESKTOP-ISO5UUJ/events.out.tfevents.1635302171.DESKTOP-ISO5UUJ.19864.0
-AlexNet/runs/Oct27_10-36-08_DESKTOP-ISO5UUJ/events.out.tfevents.1635302172.DESKTOP-ISO5UUJ.13244.0
-AlexNet/runs/Oct27_10-36-08_DESKTOP-ISO5UUJ/events.out.tfevents.1635302172.DESKTOP-ISO5UUJ.8108.0
-AlexNet/runs/Oct27_10-36-09_DESKTOP-ISO5UUJ/events.out.tfevents.1635302172.DESKTOP-ISO5UUJ.6728.0
-AlexNet/runs/Oct27_11-02-30_DESKTOP-ISO5UUJ/events.out.tfevents.1635303753.DESKTOP-ISO5UUJ.19956.0
-AlexNet/runs/Oct27_11-02-36_DESKTOP-ISO5UUJ/events.out.tfevents.1635303760.DESKTOP-ISO5UUJ.12520.0
-AlexNet/runs/Oct27_11-02-36_DESKTOP-ISO5UUJ/events.out.tfevents.1635303760.DESKTOP-ISO5UUJ.15432.0
-AlexNet/runs/Oct27_11-02-36_DESKTOP-ISO5UUJ/events.out.tfevents.1635303760.DESKTOP-ISO5UUJ.15552.0
-AlexNet/runs/Oct27_11-02-36_DESKTOP-ISO5UUJ/events.out.tfevents.1635303760.DESKTOP-ISO5UUJ.20352.0
-AlexNet/runs/Oct27_11-02-36_DESKTOP-ISO5UUJ/events.out.tfevents.1635303760.DESKTOP-ISO5UUJ.6820.0
-AlexNet/runs/Oct27_11-02-36_DESKTOP-ISO5UUJ/events.out.tfevents.1635303760.DESKTOP-ISO5UUJ.9380.0
-AlexNet/runs/Oct27_11-02-37_DESKTOP-ISO5UUJ/events.out.tfevents.1635303760.DESKTOP-ISO5UUJ.1720.0
-AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303859.DESKTOP-ISO5UUJ.11284.0
-AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303859.DESKTOP-ISO5UUJ.13484.0
-AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303859.DESKTOP-ISO5UUJ.13920.0
-AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303859.DESKTOP-ISO5UUJ.1712.0
-AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303859.DESKTOP-ISO5UUJ.20284.0
-AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303859.DESKTOP-ISO5UUJ.2452.0
-AlexNet/runs/Oct27_11-04-16_DESKTOP-ISO5UUJ/events.out.tfevents.1635303860.DESKTOP-ISO5UUJ.2080.0
-AlexNet/result.csv
+# READ THIS BEFORE YOU REFACTOR ME
+#
+# setup.py uses the list of patterns in this file to decide
+# what to delete, but it's not 100% sound.  So, for example,
+# if you delete aten/build/ because it's redundant with build/,
+# aten/build/ will stop being cleaned.  So be careful when
+# refactoring this file!
+
+## PyTorch
+
+.coverage
+.gradle
+.hypothesis
+.mypy_cache
+*/*.pyc
+*/*.so*
+*/**/__pycache__
+*/**/*.dylib*
+*/**/*.pyc
+*/**/*.pyd
+*/**/*.so*
+*/**/**/*.pyc
+*/**/**/**/*.pyc
+*/**/**/**/**/*.pyc
+aten/build/
+aten/src/ATen/Config.h
+aten/src/ATen/cuda/CUDAConfig.h
+caffe2/cpp_test/
+dist/
+docs/src/**/*
+docs/cpp/build
+docs/cpp/source/api
+log
+test/.coverage
+test/.hypothesis/
+test/cpp/api/mnist
+test/custom_operator/model.pt
+test/data/legacy_modules.t7
+test/data/*.pt
+test/backward_compatibility/new_schemas.txt
+dropout_model.pt
+test/generated_type_hints_smoketest.py
+test/htmlcov
+test/cpp_extensions/install/
+test/test-reports/
+third_party/build/
+tools/shared/_utils_internal.py
+torch.egg-info/
+torch/__init__.pyi
+torch/nn/functional.pyi
+torch/nn/modules/*.pyi
+torch/csrc/autograd/generated/*
+torch/csrc/cudnn/cuDNN.cpp
+torch/csrc/generated
+torch/csrc/generic/TensorMethods.cpp
+torch/csrc/jit/generated/*
+torch/csrc/jit/fuser/config.h
+torch/csrc/nn/THCUNN.cpp
+torch/csrc/nn/THCUNN.cwrap
+torch/csrc/nn/THNN_generic.cpp
+torch/csrc/nn/THNN_generic.cwrap
+torch/csrc/nn/THNN_generic.h
+torch/csrc/nn/THNN.cpp
+torch/csrc/nn/THNN.cwrap
+torch/bin/
+torch/cmake/
+torch/lib/*.a*
+torch/lib/*.dll*
+torch/lib/*.exe*
+torch/lib/*.dylib*
+torch/lib/*.h
+torch/lib/*.lib
+torch/lib/*.so*
+torch/lib/protobuf*.pc
+torch/lib/build
+torch/lib/caffe2/
+torch/lib/cmake
+torch/lib/include
+torch/lib/pkgconfig
+torch/lib/protoc
+torch/lib/protobuf/
+torch/lib/tmp_install
+torch/lib/torch_shm_manager
+torch/lib/site-packages/
+torch/lib/python*
+torch/lib64
+torch/include/
+torch/share/
+torch/test/
+torch/version.py
+tf-logs/
+data/
+AlexNet/runs
+AlexNet/fashionmnist_data
+# Root level file used in CI to specify certain env configs.
+# E.g., see .circleci/config.yaml
+env
+.circleci/scripts/COMMIT_MSG
+
+# IPython notebook checkpoints
+.ipynb_checkpoints
+
+# Editor temporaries
+*.txt
+*.csv
+*.swn
+*.swo
+*.swp
+*.swm
+*~
+*.jpg
+*.png
+# macOS dir files
+.DS_Store
+
+# Symbolic files
+tools/shared/cwrap_common.py
+
+# Ninja files
+.ninja_deps
+.ninja_log
+compile_commands.json
+*.egg-info/
+docs/source/scripts/activation_images/
+
+## General
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.cuo
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Compiled protocol buffers
+*.pb.h
+*.pb.cc
+*_pb2.py
+
+# Compiled python
+*.pyc
+*.pyd
+
+# Compiled MATLAB
+*.mex*
+
+# IPython notebook checkpoints
+.ipynb_checkpoints
+
+# Editor temporaries
+*.swn
+*.swo
+*.swp
+*~
+
+# Sublime Text settings
+*.sublime-workspace
+*.sublime-project
+
+# Eclipse Project settings
+*.*project
+.settings
+
+# QtCreator files
+*.user
+
+# PyCharm files
+.idea
+
+# OSX dir files
+.DS_Store
+
+# GDB history
+.gdb_history
+
+## Caffe2
+
+# build, distribute, and bins (+ python proto bindings)
+build
+build_host_protoc
+build_android
+build_ios
+/build_*
+.build_debug/*
+.build_release/*
+distribute/*
+*.testbin
+*.bin
+cmake_build
+.cmake_build
+gen
+.setuptools-cmake-build
+.pytest_cache
+aten/build/*
+
+# Bram
+plsdontbreak
+
+# Generated documentation
+docs/_site
+docs/gathered
+_site
+doxygen
+docs/dev
+
+# LevelDB files
+*.sst
+*.ldb
+LOCK
+CURRENT
+MANIFEST-*
+
+# generated version file
+caffe2/version.py
+
+# setup.py intermediates
+.eggs
+caffe2.egg-info
+
+# Atom/Watchman required file
+.watchmanconfig
+
+# Files generated by CLion
+cmake-build-debug
+
+# BEGIN NOT-CLEAN-FILES (setup.py handles this marker. Do not change.)
+#
+# Below files are not deleted by "setup.py clean".
+
+# Visual Studio Code files
+.vscode
+.vs
+
+# YouCompleteMe config file
+.ycm_extra_conf.py
+
+# Files generated when a patch is rejected
+*.orig
+*.rej
+*.gz
+# Files generated by ctags
+CTAGS
+GTAGS
+GRTAGS
+GSYMS
+GPATH
+tags
+TAGS
+
+
+# ccls file
+.ccls-cache/
+model_para/best_model.pth
+model_para/checkpoint.pth
+model_para/lowest_loss.pth
 AlexNet/leaf/para
-AlexNet/leaf/test.csv
-AlexNet/leaf/train.csv

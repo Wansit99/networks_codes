@@ -84,13 +84,21 @@ class Net(nn.Module):
 def train(model, device, train_loader, test_loader, epochs, lr=0.1, save_dir=None):
     # 如果采用默认初始化权重，很难train的动
     def init_weights(m):
-        if isinstance(m, nn.Linear) or isinstance(m, nn.Conv2d):
+        # if isinstance(m, nn.Linear) or isinstance(m, nn.Conv2d):
+        #     nn.init.xavier_uniform_(m.weight)
+        if isinstance(m, nn.Linear):
             nn.init.xavier_uniform_(m.weight)
 
     model.apply(init_weights)
 
     model.to(device)
-    optimizer = optim.SGD(model.parameters(), lr=lr)
+    params_1x = [param for name, param in net.named_parameters()
+                 if name not in ["fc.weight", "fc.bias"]]
+    params = [{'params': params_1x, 'lr': lr / 10},
+              {'params': model.fc.parameters(),
+               'lr': lr}]
+    optimizer = torch.optim.SGD(params, weight_decay=0.001)
+
     loss = nn.CrossEntropyLoss()
     for epoch in range(epochs):
         model.train()

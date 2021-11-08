@@ -2,10 +2,11 @@ import pandas as pd
 import numpy as np
 import os
 from torch.utils.data import DataLoader, Dataset
-import cv2
 import torch
 from torchvision import datasets, transforms
 from ResNet import *
+import torchvision
+from PIL import Image
 
 trainss = pd.read_csv('train.csv')
 test = pd.read_csv('test.csv')
@@ -61,7 +62,7 @@ class LeafData(Dataset):  # 继承Dataset
 
         image_index = self.images[index]  # 根据索引index获取该图片
         img_path = os.path.join(self.root_dir, image_index)  # 获取索引为index的图片的路径名
-        img = cv2.imread(img_path)  # 读取该图片
+        img = Image.open(img_path)  # 读取该图片
         # 加上这句话 才是[128, 3, 224, 224]
         # img = torch.from_numpy(img).permute(2, 0, 1)
         label_idx = int(img_path.split('/')[-1].split('.')[0])
@@ -85,13 +86,19 @@ def try_gpu(i=0):
 
 if __name__ == "__main__":
 
-    batch_size = 256
-    num_works = 8  # 加载数据集用的cpu核数
+    batch_size = 128
+    num_works = 4  # 加载数据集用的cpu核数
     pin_memory = True  # 使用内存更快
+
+    train_augs = torchvision.transforms.Compose([
+        torchvision.transforms.RandomHorizontalFlip(p=0.5),
+        torchvision.transforms.RandomVerticalFlip(p=0.5),
+        torchvision.transforms.ColorJitter(brightness=0.5, contrast=0, saturation=0, hue=0),
+        torchvision.transforms.ToTensor()])
     trains = LeafData(
         root_dir=root,
         labels=pred,
-        transform=transforms.ToTensor(),
+        transform=train_augs,
         train=True)  # 初始化类，设置数据集所在路径以及变换
     train_loader = torch.utils.data.DataLoader(
         trains,
@@ -111,7 +118,7 @@ if __name__ == "__main__":
 
     model = Net()
     epochs = 15
-    lr = 0.15
+    lr = 0.1
     num_gpus = 1
     save_dir = 'leaf_params'
     if num_gpus > 1:
