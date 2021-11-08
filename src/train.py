@@ -16,7 +16,7 @@ from torch.utils.data import Dataset, DataLoader
 from utils.utils import train,validate,creatdir
 from models.ResNet import ResNet50
 import torchvision
-from datasets.leaf import MyDataloader
+from datasets.emotion import MyDataloader
 from utils.utils import try_gpu
 from torch.utils.tensorboard import SummaryWriter
 
@@ -27,7 +27,7 @@ parser.add_argument('--filename', type=str, default= '../logs', help='whether to
 # 模型及数据存储路径
 parser.add_argument('--checkpoint_dir', type=str, default='../model_para', help='directory where model checkpoints are saved')
 # 批次
-parser.add_argument('--batch_size', type=int, default=10, help='size of each image batch')
+parser.add_argument('--batch_size', type=int, default=32, help='size of each image batch')
 # 学习率
 parser.add_argument('--learning_rate', type=float, default=0.01, help='learning rate')
 # cuda设置
