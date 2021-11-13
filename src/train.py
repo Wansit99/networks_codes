@@ -19,6 +19,7 @@ import torchvision
 from datasets.emotion import MyDataloader
 from utils.utils import try_gpu
 from torch.utils.tensorboard import SummaryWriter
+from models.multiscale_resnet import multiscale_resnet
 
 # 参数设置
 parser = argparse.ArgumentParser()
